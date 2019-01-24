@@ -30,7 +30,10 @@ Route::group([
 
 });
 // articles api
-Route::prefix('article')->group(function () {
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'article'
+], function () {
     Route::get('/', 'ArticleController@index');
     Route::get('{id}', 'ArticleController@show');
     Route::post('/', 'ArticleController@store');
